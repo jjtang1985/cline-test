@@ -1,0 +1,44 @@
+name: Download Moodle PDF
+
+on:
+  schedule:
+    # Runs every weekday at 07:00 UTC (adjust as needed)
+    - cron: '0 7 * * 1-5'
+  workflow_dispatch:
+    # Allow manual triggering from the GitHub Actions UI
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run download script
+        env:
+          MOODLE_USERNAME: ${{ secrets.MOODLE_USERNAME }}
+          MOODLE_PASSWORD: ${{ secrets.MOODLE_PASSWORD }}
+          PDF_URL: ${{ secrets.PDF_URL }}
+        run: npm run download
+
+      - name: Commit and push downloaded file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/
+          if git diff --cached --quiet; then
+            echo "No new files to commit."
+          else
+            git commit -m "chore: add downloaded PDF [$(date -u '+%Y-%m-%d')]"
+            git push
+          fi
