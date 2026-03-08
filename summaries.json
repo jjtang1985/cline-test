@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-03-05T20:12:50.495Z",
+  "totalFiles": 1,
+  "successfulSummaries": 1,
+  "failedSummaries": 0,
+  "results": [
+    {
+      "success": true,
+      "summary": "Original Table Header: Stunde | Klas | Fac | Lehrer | Fach | Vertreter | Raum | Text\n\nExtracted Information:\n\n1. Stunde 2 | Klas 5L | Fac DE | Lehrer Grese | Fach DE | Vertreter Ludwig | Raum W2.131 | Text +3 Block\n\n2. Stunde 3-6 | Klas 5L | Abwesend",
+      "metadata": {
+        "pdfPath": "downloads/VKlasse_2026-03-05.pdf",
+        "textLength": 2176,
+        "modelUsed": "gpt-4o",
+        "timestamp": "2026-03-05T20:12:48.338Z"
+      }
+    }
+  ]
+}
