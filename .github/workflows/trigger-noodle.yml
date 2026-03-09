@@ -1,0 +1,24 @@
+name: Trigger Moodle PDF Download
+
+on:
+  schedule:
+    # Same schedule as download.yml on the moodle branch
+    # Runs every Sun, Mon, Tue, Wed, Thu at 18:30 UTC (19:30 CET / 20:30 CEST)
+    - cron: '30 18 * * 0,1,2,3,4'
+  workflow_dispatch:
+    # Allow manual triggering from the GitHub Actions UI
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+
+    steps:
+      - name: Trigger download workflow on moodle branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run download.yml \
+            --repo ${{ github.repository }} \
+            --ref moodle
