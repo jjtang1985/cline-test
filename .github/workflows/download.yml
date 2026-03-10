@@ -1,10 +1,6 @@
 name: Download Moodle PDF
 
 on:
-  schedule:
-    # Runs every Sun, Mon, Tue, Wed, Thu at 18:30 UTC
-    # = 19:30 Berlin time (CET/UTC+1); note: 20:30 during CEST (UTC+2, late Mar–late Oct)
-    - cron: '30 18 * * 0,1,2,3,4'
   workflow_dispatch:
     # Allow manual triggering from the GitHub Actions UI
 
