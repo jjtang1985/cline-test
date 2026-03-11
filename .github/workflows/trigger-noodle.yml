@@ -3,8 +3,8 @@ name: Trigger Moodle PDF Download
 on:
   schedule:
     # Same schedule as download.yml on the moodle branch
-    # Runs every Sun, Mon, Tue, Wed, Thu at 18:30 UTC (19:30 CET / 20:30 CEST)
-    - cron: '30 18 * * 0,1,2,3,4'
+    # Runs every Sun, Mon, Tue, Wed, Thu at 18:00 UTC (19:00 CET / 20:00 CEST)
+    - cron: '0 18 * * 0,1,2,3,4'
   workflow_dispatch:
     # Allow manual triggering from the GitHub Actions UI
 
